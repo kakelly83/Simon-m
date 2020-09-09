@@ -3,9 +3,14 @@ body {
   background-color: #011F3F;
 }
 
+p{
+  color: white;
+  font-family: "Verdana", sans-serif;
+}
+
 #level-title {
   font-family: 'Press Start 2P', cursive;
-  font-size: 3rem;
+  font-size: 2rem;
   margin:  5%;
   color: #FEF2BF;
 }
@@ -31,8 +36,9 @@ body {
   display: inline-block;
   height: 50px;
   width: 200px;
-  border: 10px solid black;
-  border-radius: 20%;
+  border: 5px solid white;
+  font-size: 1.5rem;
+
 }
 
 .game-over {

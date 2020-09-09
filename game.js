@@ -3,18 +3,8 @@ var level = 1;
 var sequenceNum = 0;
 var gameOver = true;
 
-//key listener
-$(document).on("keypress", function(e){
-        if(e.which == 97 || e.which == 65 ){
-          // update title and start game
-           start();
-
-        }else {
-          if(gameOver == true){
-              reset();
-          }
-        }
-    });
+//start with reset button removed
+$("#reset").hide();
 
 //button listeners
 $(".btn").click(function(){
@@ -26,6 +16,7 @@ $(".btn").click(function(){
 $(".command-btn").click(function(){
   if(this.id == "start"){
     start();
+    $("#start").remove();
   }else{
       reset();
   }
@@ -75,6 +66,8 @@ function playAnimation(colourToAni){
 
 // resets the game by resetting all variables
 function reset(){
+
+  $("#reset").hide();
   gameOver = false;
   sequence = [];
   sequenceNum = 0;
@@ -120,7 +113,8 @@ function buttonPressed(btnPressed){
         audio.play();
 
         //show instructions on how to reset the game
-        $("#level-title").text("Game Over, Press Any Key to Restart");
+        $("#level-title").text("Game Over!");
+        $("#reset").show();
         gameOver = true;
       }
   }
