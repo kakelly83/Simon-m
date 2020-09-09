@@ -2,6 +2,7 @@ var sequence = [];
 var level = 1;
 var sequenceNum = 0;
 var gameOver = true;
+var topScore = 0;
 
 //start with reset button removed
 $("#reset").hide();
@@ -24,6 +25,7 @@ $(".command-btn").click(function(){
 
 function start(){
   $("#level-title").text("Level 1");
+
   gameOver = false
   nextSequence();
 }
@@ -66,13 +68,23 @@ function playAnimation(colourToAni){
 
 // resets the game by resetting all variables
 function reset(){
-
+  $("#score-text").text("Current high score: Level " + topScore);
   $("#reset").hide();
   gameOver = false;
   sequence = [];
   sequenceNum = 0;
   level = 1;
   start();
+}
+
+function checkTopScore(){
+  if(level > topScore)
+  {
+    topScore = level;
+    return true;
+  }else{
+    return false;
+  }
 }
 
 function buttonPressed(btnPressed){
@@ -112,8 +124,18 @@ function buttonPressed(btnPressed){
         audio = new Audio("sounds/wrong.mp3");
         audio.play();
 
+        //check if they beat top score
+        if(checkTopScore()){
+            $("#level-title").text("Game Over!");
+            $("#score-text").text("NEW HIGH SCORE! Level " + level);
+        }else{
+            $("#level-title").text("Game Over!");
+            $("#score-text").text("You reached Level " + level);
+        }
+
         //show instructions on how to reset the game
-        $("#level-title").text("Game Over!");
+
+        
         $("#reset").show();
         gameOver = true;
       }
