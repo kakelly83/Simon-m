@@ -1,11 +1,73 @@
+
 var sequence = [];
 var level = 1;
 var sequenceNum = 0;
 var gameOver = true;
 var topScore = 0;
+var greenSequence = ["#ffc93c", "#07689f","#ec0101","#519872"  ];
+var blueSequence = ["#ec0101", "#519872","#ffc93c","#07689f"  ];
+var redSequence = ["#519872", "#ffc93c","#07689f","#ec0101"  ];
+var yellowSequence = ["#07689f", "#ec0101","#519872","#ffc93c"  ];
 
-//start with reset button removed
-$("#reset").hide();
+
+
+// run the logo animation when page loads
+$(window).on('load', function () {
+    //start with reset button removed
+    $("#reset").hide();
+
+    //trigger logo animations
+    animateLogoComponent(".blueTb", "#07689f",blueSequence );
+    setTimeout(function(){
+      animateLogoComponent(".yellowTb", "#ffc93c", yellowSequence);
+    }, 200);
+    setTimeout(function(){
+      animateLogoComponent(".redTb", "#ec0101", redSequence);
+    }, 400);
+    setTimeout(function(){
+      animateLogoComponent(".greenTb", "#519872", greenSequence);
+    }, 800)
+});
+
+
+
+//animation of logo - slides in and changes colours
+function animateLogoComponent(btnName, bgCol, colSequence){
+
+  $(btnName).css("background-color", bgCol);
+  slideAni(btnName);
+  setTimeout(function(){
+    colourAni(btnName, colSequence);
+  }, 2000);
+
+
+}
+
+// slides in each button from left to right
+function slideAni(component){
+  var div = $(component);
+  div.animate({marginLeft: "6px"}, 1000, "swing");
+
+}
+
+// flashes different colours for each button
+function colourAni(btnName, colSeq){
+
+  $(btnName).css("background-color", colSeq[0]);
+  setTimeout(function(){
+    $(btnName).css("background-color", colSeq[1]);
+  }, 500);
+  setTimeout(function(){
+    $(btnName).css("background-color", colSeq[2]);
+  }, 500);
+  setTimeout(function(){
+    $(btnName).css("background-color", colSeq[3]);
+  }, 500);
+
+}
+
+
+
 
 //button listeners
 $(".btn").click(function(){
@@ -135,7 +197,7 @@ function buttonPressed(btnPressed){
 
         //show instructions on how to reset the game
 
-        
+
         $("#reset").show();
         gameOver = true;
       }

@@ -4,16 +4,37 @@
 <head>
   <meta charset="utf-8">
   <title>Simon</title>
-  <link rel="stylesheet" href="styles.css">
+  <script src='http://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+  <script type="text/javascript" src="jQuery.Keyframes-master/dist/jquery.keyframes.min.js"></script>
+
+
+
+  <link rel="stylesheet" href="styles3.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 
 <body>
+  <section class="header">
+    <div class="title">
+      <div type="button"  class="tiny-btn greenTb">
+      </div>
+      <div type="button"  class="tiny-btn redTb">
+      </div>
+      <div type="button"  class="tiny-btn yellowTb">
+      </div>
+      <div type="button"  class="tiny-btn blueTb">
+      </div>
+      <div class="title-text">
+          SIMON
+      </div>
+    </div>
+    <p class="instruction">
+      Repeat the sequence shown. A new colour will be added on each level
+    </p>
+  </section>
+
   <h1 id="level-title">Press start!</h1>
   <h2 id="score-text"></h2>
-  <p class="instruction">
-    Repeat the sequence shown, shown. A new colour will be added to the sequence on each level
-  </p>
   <button id="start" class="command-btn">Start</button>
   <button id="reset" class="command-btn">Reset</button>
   <div class="container">
@@ -40,12 +61,12 @@
     </div>
 
   </div>
-  
+
 
   </p>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="game.js" charset="utf-8"></script>
+  <script type="text/javascript" src="game.js" charset="utf-8"></script>
 </body>
 
 </html>
